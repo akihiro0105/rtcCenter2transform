@@ -37,10 +37,10 @@ try {
 function cesiumRTC2Transforms(j, d, transbase) {
     if (j.boundingVolume && j.content && j.content.boundingVolume) {
         j.transform = [
-            1,0,0,0,
-            0,1,0,0,
-            0,0,1,0,
-            j.content.boundingVolume.box[0] - transbase[0],j.content.boundingVolume.box[1] - transbase[1],j.content.boundingVolume.box[2] - transbase[2],1
+            1, 0, 0, 0,
+            0, 1, 0, 0,
+            0, 0, 1, 0,
+            j.content.boundingVolume.box[0] - transbase[0], j.content.boundingVolume.box[1] - transbase[1], j.content.boundingVolume.box[2] - transbase[2], 1
         ];
         transbase = j.content.boundingVolume.box.slice(0, 3);
         j.boundingVolume.box[0] -= j.content.boundingVolume.box[0];
@@ -51,10 +51,11 @@ function cesiumRTC2Transforms(j, d, transbase) {
         j.content.boundingVolume.box[2] = 0;
     }
     if (j.children) {
-         j.children = j.children.map((c)=>cesiumRTC2Transforms(c,d+1,transbase));
+        j.children = j.children.map((c) => cesiumRTC2Transforms(c, d + 1, transbase));
     }
     return j;
 }
 
-cesiumRTC2Transforms(tileset.root, 0, [0,0,0]);
-console.log(JSON.stringify(tileset, null, 4));
+cesiumRTC2Transforms(tileset.root, 0, [0, 0, 0]);
+
+require('fs').writeFileSync(tilesetFilename + 'c4u.json', JSON.stringify(tileset, null, 4));

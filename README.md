@@ -19,8 +19,10 @@ A conversion tool that fine-tunes PLATEAU's 3D Tiles for display in Cesium for U
 
 ``` bash
 $ npm install
-$ node rtcCenter2transform ../13113_shibuya-ku/tileset.json > ../13113_shibuya-ku/tileset.c4u.json
+$ node rtcCenter2transform ../13113_shibuya-ku/tileset.json 
 ```
+
+tileset.jsonc4u.json で保存されます 
 
 ![settings](./settings.png)
 
